@@ -1,23 +1,82 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Play Tech Venture</title>
   <style>
+    :root[data-theme="dark"] {
+      --bg: #0f0f1a;
+      --text: #eee;
+      --text-sub: #888;
+      --card-bg: #1a1a2e;
+      --card-border: #333;
+      --card-hover: #e94560;
+      --toggle-bg: #1a1a2e;
+      --toggle-border: #555;
+    }
+    :root[data-theme="light"] {
+      --bg: #f5f5f7;
+      --text: #1a1a2e;
+      --text-sub: #666;
+      --card-bg: #fff;
+      --card-border: #ddd;
+      --card-hover: #e94560;
+      --toggle-bg: #fff;
+      --toggle-border: #ccc;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { min-height: 100vh; background: #0f0f1a; color: #eee; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 3rem 1.5rem; }
-    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-    .subtitle { color: #888; margin-bottom: 2.5rem; }
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      padding: 3rem 1.5rem;
+      transition: background 0.3s, color 0.3s;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    h1 { font-size: 2rem; }
+    .theme-toggle {
+      background: var(--toggle-bg);
+      border: 1px solid var(--toggle-border);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      font-size: 1.3rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .theme-toggle:hover {
+      border-color: var(--card-hover);
+    }
+    .subtitle { color: var(--text-sub); margin-bottom: 2.5rem; }
     .apps { list-style: none; display: flex; flex-wrap: wrap; gap: 1rem; }
-    .apps a { display: block; padding: 1.2rem 1.5rem; background: #1a1a2e; border: 1px solid #333; border-radius: 8px; color: #eee; text-decoration: none; min-width: 200px; transition: border-color 0.2s; }
-    .apps a:hover { border-color: #e94560; }
+    .apps a {
+      display: block;
+      padding: 1.2rem 1.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+      min-width: 200px;
+      transition: border-color 0.2s, background 0.3s, color 0.3s;
+    }
+    .apps a:hover { border-color: var(--card-hover); }
     .apps .name { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem; }
-    .apps .desc { font-size: 0.85rem; color: #888; }
+    .apps .desc { font-size: 0.85rem; color: var(--text-sub); transition: color 0.3s; }
   </style>
 </head>
 <body>
-  <h1>Play Tech Venture</h1>
+  <div class="header">
+    <h1>Play Tech Venture</h1>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+  </div>
   <p class="subtitle">Browser-based apps collection</p>
   <ul class="apps">
     <li><a href="pixel-life/"><div class="name">Pixel Life</div><div class="desc">Pixel-style life simulator</div></a></li>
@@ -27,5 +86,21 @@
     <li><a href="ecosystem-sim/"><div class="name">Ecosystem Sim</div><div class="desc">자연 생태계 시뮬레이터</div></a></li>
     <li><a href="social-battery/"><div class="name">Social Battery</div><div class="desc">나의 소셜 배터리 유형 테스트</div></a></li>
   </ul>
+  <script>
+    (function() {
+      var btn = document.getElementById('themeToggle');
+      var root = document.documentElement;
+      var saved = localStorage.getItem('ptv-theme');
+      var theme = saved || 'dark';
+      root.setAttribute('data-theme', theme);
+      btn.textContent = theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+      btn.addEventListener('click', function() {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        btn.textContent = theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+        localStorage.setItem('ptv-theme', theme);
+      });
+    })();
+  </script>
 </body>
 </html>
