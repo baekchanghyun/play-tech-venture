@@ -1,4 +1,4 @@
-import{j as e,u as m,r as c}from"./index-DA_so43f.js";import{a as h,d as b}from"./history-db-Bpxs1fj9.js";import{P as u}from"./PixelCard-CWNn433b.js";function g(a){const o=new Date(a),t=o.getFullYear(),n=String(o.getMonth()+1).padStart(2,"0"),s=String(o.getDate()).padStart(2,"0");return`${t}.${n}.${s}`}function f({name:a,finalAge:o,finalStats:t,createdAt:n,onClick:s,onDelete:i}){return e.jsxs("div",{className:`
+import{j as e,u as m,r as c}from"./index-OPFde3V9.js";import{a as h,d as b}from"./history-db-Bpxs1fj9.js";import{P as u}from"./PixelCard-DXqAhZFG.js";function g(a){const o=new Date(a),t=o.getFullYear(),n=String(o.getMonth()+1).padStart(2,"0"),s=String(o.getDate()).padStart(2,"0");return`${t}.${n}.${s}`}function f({name:a,finalAge:o,finalStats:t,createdAt:n,onClick:s,onDelete:i}){return e.jsxs("div",{className:`
         flex items-center justify-between
         px-4 py-3 mb-2
         cursor-pointer

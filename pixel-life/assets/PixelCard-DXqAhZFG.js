@@ -1,4 +1,4 @@
-import{j as r}from"./index-DA_so43f.js";function c({children:a,title:o,className:e=""}){return r.jsxs("div",{className:`bg-[var(--color-bg-card)] ${e}`,style:{boxShadow:`
+import{j as r}from"./index-OPFde3V9.js";function c({children:a,title:o,className:e=""}){return r.jsxs("div",{className:`bg-[var(--color-bg-card)] ${e}`,style:{boxShadow:`
           2px 0 0 0 var(--color-border),
           -2px 0 0 0 var(--color-border),
           0 2px 0 0 var(--color-border),
