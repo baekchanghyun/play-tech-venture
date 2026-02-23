@@ -34,6 +34,10 @@
       padding: 3rem 1.5rem;
       transition: background 0.3s, color 0.3s;
     }
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
     .header {
       display: flex;
       align-items: center;
@@ -55,7 +59,12 @@
       border-color: var(--card-hover);
     }
     .subtitle { color: var(--text-sub); margin-bottom: 2.5rem; }
-    .apps { list-style: none; display: flex; flex-wrap: wrap; gap: 1rem; }
+    .apps {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
     .apps a {
       display: block;
       padding: 1.2rem 1.5rem;
@@ -64,15 +73,19 @@
       border-radius: 8px;
       color: var(--text);
       text-decoration: none;
-      min-width: 200px;
+      height: 100%;
       transition: border-color 0.2s, background 0.3s, color 0.3s;
     }
     .apps a:hover { border-color: var(--card-hover); }
     .apps .name { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem; }
     .apps .desc { font-size: 0.85rem; color: var(--text-sub); transition: color 0.3s; }
+    @media (max-width: 480px) {
+      .apps { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
+  <div class="container">
   <div class="header">
     <h1>Play Tech Venture</h1>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
@@ -90,6 +103,7 @@
     <li><a href="fortune-cookie/"><div class="name">🥠 Fortune Cookie</div><div class="desc">하루 한 번, 포춘 쿠키를 깨고 운세를 수집하세요</div></a></li>
     <li><a href="signal-noise/"><div class="name">📡 Signal Noise</div><div class="desc">뉴스 속 진짜 신호를 찾아내는 미디어 리터러시 게임</div></a></li>
   </ul>
+  </div>
   <script>
     (function() {
       var btn = document.getElementById('themeToggle');
