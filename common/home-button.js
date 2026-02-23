@@ -15,7 +15,6 @@
   // 2. CSS 주입
   var style = document.createElement('style');
   style.textContent = [
-    'html { word-break: keep-all; }',
     '.ptv-home-btn {',
     '  position: fixed;',
     '  left: 16px;',
