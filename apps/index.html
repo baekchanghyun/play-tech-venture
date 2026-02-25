@@ -59,7 +59,27 @@
     .theme-toggle:hover {
       border-color: var(--card-hover);
     }
-    .subtitle { color: var(--text-sub); margin-bottom: 2.5rem; }
+    .subtitle { color: var(--text-sub); margin-bottom: 1.5rem; }
+    .blog-banner {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 1.2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: border-color 0.2s, background 0.3s;
+    }
+    .blog-banner:hover { border-color: var(--card-hover); }
+    .blog-banner .blog-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .blog-banner .blog-text { flex: 1; }
+    .blog-banner .blog-title { font-size: 0.95rem; font-weight: 600; }
+    .blog-banner .blog-desc { font-size: 0.8rem; color: var(--text-sub); margin-top: 0.15rem; transition: color 0.3s; }
+    .blog-banner .blog-arrow { color: var(--text-sub); font-size: 1.1rem; transition: color 0.3s; }
+    .blog-banner:hover .blog-arrow { color: var(--card-hover); }
     .apps {
       list-style: none;
       display: grid;
@@ -92,6 +112,14 @@
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
   </div>
   <p class="subtitle">Browser-based apps collection</p>
+  <a class="blog-banner" href="/play-tech-venture/blog/">
+    <span class="blog-icon">📝</span>
+    <span class="blog-text">
+      <div class="blog-title">Play Tech Venture의 이야기가 궁금하다면</div>
+      <div class="blog-desc">개발 비하인드, 기술 이야기, 회고를 기록합니다</div>
+    </span>
+    <span class="blog-arrow">&#8250;</span>
+  </a>
   <ul class="apps">
     <li><a href="/play-tech-venture/apps/pixel-life/"><div class="name">👾 Pixel Life</div><div class="desc">Pixel-style life simulator</div></a></li>
     <li><a href="/play-tech-venture/apps/destiny-chart/"><div class="name">🔮 Destiny Chart</div><div class="desc">사주팔자 · 자미두수 · 서양 점성술 계산기</div></a></li>
