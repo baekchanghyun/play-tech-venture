@@ -220,6 +220,30 @@
     '.ptv-ad-skip:hover {',
     '  color: #666;',
     '  border-color: rgba(0,0,0,0.2);',
+    '}',
+
+    // 상단 고정 배너
+    '.ptv-ad-pinned-top {',
+    '  position: sticky;',
+    '  top: 0;',
+    '  z-index: 1000;',
+    '}',
+
+    // 하단 고정 배너
+    '.ptv-ad-pinned-bottom {',
+    '  position: fixed;',
+    '  bottom: var(--ptv-nav-height, 0px);',
+    '  left: 0;',
+    '  right: 0;',
+    '  z-index: 1000;',
+    '  padding: 0 1rem 0.5rem;',
+    '  pointer-events: none;',
+    '}',
+    '.ptv-ad-pinned-bottom > .ptv-ad-banner {',
+    '  pointer-events: auto;',
+    '  max-width: 32rem;',
+    '  margin: 0 auto;',
+    '  box-shadow: 0 -2px 8px rgba(0,0,0,0.1);',
     '}'
   ].join('\n');
   document.head.appendChild(style);
@@ -325,15 +349,9 @@
   }
 
   // ── E. 배너 광고 (Banner) ──
-  function renderBanner(container) {
-    // 중복 렌더링 방지
-    if (container.hasAttribute('data-ptv-ad-rendered')) return;
 
-    var ad = pickAd();
-    if (!ad) return;
-
-    container.setAttribute('data-ptv-ad-rendered', '');
-
+  // 배너 내부 콘텐츠(링크) 생성 — 인라인/고정 배너 공용
+  function createBannerLink(ad) {
     var link = document.createElement('a');
     link.className = 'ptv-ad-banner';
     link.href = ad.url;
@@ -370,7 +388,36 @@
     arrow.textContent = '›';
     link.appendChild(arrow);
 
-    container.appendChild(link);
+    return link;
+  }
+
+  // E-1. 인라인 배너 (기존 — data-ptv-ad="banner")
+  function renderBanner(container) {
+    if (container.hasAttribute('data-ptv-ad-rendered')) return;
+    var ad = pickAd();
+    if (!ad) return;
+    container.setAttribute('data-ptv-ad-rendered', '');
+    container.appendChild(createBannerLink(ad));
+  }
+
+  // E-2. 고정 배너 (신규 — data-ptv-ad="banner-top" / "banner-bottom")
+  function renderPinnedBanner(container) {
+    if (container.hasAttribute('data-ptv-ad-rendered')) return;
+    var ad = pickAd();
+    if (!ad) return;
+    container.setAttribute('data-ptv-ad-rendered', '');
+
+    var position = container.getAttribute('data-ptv-ad');
+    var isTop = position === 'banner-top';
+    container.classList.add(isTop ? 'ptv-ad-pinned-top' : 'ptv-ad-pinned-bottom');
+    container.appendChild(createBannerLink(ad));
+
+    // 배너 높이를 CSS 변수로 노출 → 앱이 레이아웃 패딩 조정에 활용
+    requestAnimationFrame(function() {
+      var h = container.offsetHeight;
+      var varName = isTop ? '--ptv-ad-top-h' : '--ptv-ad-bottom-h';
+      document.documentElement.style.setProperty(varName, h + 'px');
+    });
   }
 
   // ── F. API 노출 ──
@@ -378,12 +425,27 @@
   window.ptv.ads = { interstitial: showInterstitial };
 
   // ── G. 초기화 ──
-  function init() {
-    // 기존 배너 요소 처리
-    var banners = document.querySelectorAll('[data-ptv-ad="banner"]');
-    for (var i = 0; i < banners.length; i++) {
-      renderBanner(banners[i]);
+
+  // 노드에서 배너 타입에 맞는 렌더 함수 호출
+  function processAdNode(node) {
+    if (node.nodeType !== 1 || !node.getAttribute) return;
+    var type = node.getAttribute('data-ptv-ad');
+    if (type === 'banner') renderBanner(node);
+    else if (type === 'banner-top' || type === 'banner-bottom') renderPinnedBanner(node);
+  }
+
+  // 노드 내부의 모든 광고 요소 탐색
+  function processAdDescendants(node) {
+    if (!node.querySelectorAll) return;
+    var all = node.querySelectorAll('[data-ptv-ad="banner"], [data-ptv-ad="banner-top"], [data-ptv-ad="banner-bottom"]');
+    for (var i = 0; i < all.length; i++) {
+      processAdNode(all[i]);
     }
+  }
+
+  function init() {
+    // 기존 + 고정 배너 요소 일괄 처리
+    processAdDescendants(document);
 
     // MutationObserver로 동적 배너 감지
     if (typeof MutationObserver !== 'undefined') {
@@ -392,19 +454,8 @@
           var nodes = mutations[i].addedNodes;
           for (var j = 0; j < nodes.length; j++) {
             var node = nodes[j];
-            if (node.nodeType === 1) {
-              // 추가된 노드 자체가 배너인 경우
-              if (node.getAttribute && node.getAttribute('data-ptv-ad') === 'banner') {
-                renderBanner(node);
-              }
-              // 추가된 노드의 하위에 배너가 있는 경우
-              if (node.querySelectorAll) {
-                var inner = node.querySelectorAll('[data-ptv-ad="banner"]');
-                for (var k = 0; k < inner.length; k++) {
-                  renderBanner(inner[k]);
-                }
-              }
-            }
+            processAdNode(node);
+            processAdDescendants(node);
           }
         }
       });
