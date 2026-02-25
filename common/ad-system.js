@@ -57,10 +57,10 @@
     '  to { opacity: 1; }',
     '}',
 
-    // 전면 광고 카드
+    // 전면 광고 카드 (흰색 배경 — 앱과 구분)
     '.ptv-ad-interstitial {',
     '  position: relative;',
-    '  background: #1a1a2e;',
+    '  background: #ffffff;',
     '  border-radius: 16px;',
     '  padding: 2.5rem 2rem 2rem;',
     '  max-width: 320px;',
@@ -68,8 +68,18 @@
     '  text-align: center;',
     '  box-shadow: 0 8px 32px rgba(0,0,0,0.4);',
     '}',
+    // PC에서 전면 광고 카드 확대
+    '@media (min-width: 768px) {',
+    '  .ptv-ad-interstitial {',
+    '    max-width: 480px;',
+    '    padding: 3rem 2.5rem 2.5rem;',
+    '  }',
+    '  .ptv-ad-emoji { font-size: 4rem; }',
+    '  .ptv-ad-title { font-size: 1.5rem; }',
+    '  .ptv-ad-desc { font-size: 1rem; }',
+    '}',
 
-    // AD 뱃지 (공통)
+    // AD 뱃지 (공통 — 흰색 카드 위에서 눈에 띄도록)
     '.ptv-ad-badge {',
     '  position: absolute;',
     '  top: 8px;',
@@ -79,8 +89,8 @@
     '  letter-spacing: 0.5px;',
     '  padding: 2px 6px;',
     '  border-radius: 4px;',
-    '  background: rgba(255,255,255,0.2);',
-    '  color: rgba(255,255,255,0.6);',
+    '  background: #ff6b35;',
+    '  color: #ffffff;',
     '  line-height: 1;',
     '}',
 
@@ -95,31 +105,31 @@
     '.ptv-ad-title {',
     '  font-size: 1.25rem;',
     '  font-weight: 700;',
-    '  color: rgba(255,255,255,0.9);',
+    '  color: #1a1a2e;',
     '  margin-bottom: 0.5rem;',
     '}',
 
     // 설명
     '.ptv-ad-desc {',
     '  font-size: 0.875rem;',
-    '  color: rgba(255,255,255,0.5);',
+    '  color: #666;',
     '  margin-bottom: 1.25rem;',
     '}',
 
-    // CTA 버튼
+    // CTA 버튼 (눈에 띄는 컬러)
     '.ptv-ad-cta {',
     '  display: inline-block;',
     '  padding: 0.75rem 1.5rem;',
-    '  background: rgba(255,255,255,0.15);',
+    '  background: #ff6b35;',
     '  border-radius: 8px;',
-    '  color: rgba(255,255,255,0.9);',
+    '  color: #ffffff;',
     '  text-decoration: none;',
     '  font-weight: 600;',
     '  font-size: 0.9rem;',
     '  transition: background 0.2s;',
     '}',
     '.ptv-ad-cta:hover {',
-    '  background: rgba(255,255,255,0.25);',
+    '  background: #e55a2b;',
     '}',
 
     // 카운트다운
@@ -130,8 +140,8 @@
     '  width: 32px;',
     '  height: 32px;',
     '  border-radius: 50%;',
-    '  background: rgba(255,255,255,0.15);',
-    '  color: rgba(255,255,255,0.6);',
+    '  background: rgba(0,0,0,0.08);',
+    '  color: #999;',
     '  display: flex;',
     '  align-items: center;',
     '  justify-content: center;',
@@ -139,26 +149,29 @@
     '  font-weight: 600;',
     '}',
 
-    // 배너 광고
+    // 배너 광고 (흰색 배경 — 앱과 구분)
     '.ptv-ad-banner {',
     '  display: flex;',
     '  align-items: center;',
     '  gap: 0.75rem;',
     '  padding: 0.9rem 1.2rem;',
-    '  background: rgba(255,255,255,0.05);',
-    '  border: 1px solid rgba(255,255,255,0.1);',
+    '  background: #ffffff;',
+    '  border: 1px solid #e0e0e0;',
     '  border-radius: 8px;',
-    '  color: rgba(255,255,255,0.9);',
+    '  color: #1a1a2e;',
     '  text-decoration: none;',
-    '  transition: border-color 0.2s, background 0.3s;',
+    '  transition: border-color 0.2s, box-shadow 0.2s;',
     '  position: relative;',
     '}',
     '.ptv-ad-banner:hover {',
-    '  border-color: rgba(255,255,255,0.3);',
+    '  border-color: #ff6b35;',
+    '  box-shadow: 0 2px 8px rgba(255,107,53,0.15);',
     '}',
     '.ptv-ad-banner .ptv-ad-badge {',
     '  position: static;',
     '  flex-shrink: 0;',
+    '  background: #ff6b35;',
+    '  color: #ffffff;',
     '}',
     '.ptv-ad-banner .ptv-ad-emoji {',
     '  font-size: 1.5rem;',
@@ -172,10 +185,12 @@
     '}',
     '.ptv-ad-banner-text .ptv-ad-title {',
     '  font-size: 0.9rem;',
+    '  color: #1a1a2e;',
     '  margin-bottom: 0.15rem;',
     '}',
     '.ptv-ad-banner-text .ptv-ad-desc {',
     '  font-size: 0.75rem;',
+    '  color: #888;',
     '  margin-bottom: 0;',
     '  white-space: nowrap;',
     '  overflow: hidden;',
@@ -183,7 +198,7 @@
     '}',
     '.ptv-ad-arrow {',
     '  font-size: 1.25rem;',
-    '  color: rgba(255,255,255,0.3);',
+    '  color: #ff6b35;',
     '  flex-shrink: 0;',
     '}'
   ].join('\n');
@@ -234,6 +249,8 @@
       var cta = document.createElement('a');
       cta.className = 'ptv-ad-cta';
       cta.href = ad.url;
+      cta.target = '_blank';
+      cta.rel = 'noopener';
       cta.textContent = ad.cta;
       content.appendChild(cta);
 
@@ -287,6 +304,8 @@
     var link = document.createElement('a');
     link.className = 'ptv-ad-banner';
     link.href = ad.url;
+    link.target = '_blank';
+    link.rel = 'noopener';
 
     var badge = document.createElement('span');
     badge.className = 'ptv-ad-badge';
