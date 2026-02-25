@@ -200,6 +200,26 @@
     '  font-size: 1.25rem;',
     '  color: #ff6b35;',
     '  flex-shrink: 0;',
+    '}',
+
+    // 건너뛰기 버튼
+    '.ptv-ad-skip {',
+    '  position: absolute;',
+    '  top: 8px;',
+    '  right: 8px;',
+    '  padding: 4px 12px;',
+    '  font-size: 0.75rem;',
+    '  font-weight: 600;',
+    '  color: #999;',
+    '  background: rgba(0,0,0,0.06);',
+    '  border: 1px solid rgba(0,0,0,0.1);',
+    '  border-radius: 4px;',
+    '  cursor: pointer;',
+    '  transition: color 0.2s, border-color 0.2s;',
+    '}',
+    '.ptv-ad-skip:hover {',
+    '  color: #666;',
+    '  border-color: rgba(0,0,0,0.2);',
     '}'
   ].join('\n');
   document.head.appendChild(style);
@@ -259,35 +279,48 @@
       // 카운트다운
       var countdown = document.createElement('div');
       countdown.className = 'ptv-ad-countdown';
-      countdown.textContent = '3';
+      countdown.textContent = '10';
       card.appendChild(countdown);
+
+      // 건너뛰기 버튼 (3초 후 표시)
+      var skipBtn = document.createElement('button');
+      skipBtn.className = 'ptv-ad-skip';
+      skipBtn.textContent = '건너뛰기';
+      skipBtn.style.display = 'none';
+      card.appendChild(skipBtn);
 
       overlay.appendChild(card);
       document.body.appendChild(overlay);
 
-      // 카운트다운 타이머: 3 → 2 → 1 → 해제
-      var remaining = 3;
-      var timer = setInterval(function() {
-        remaining--;
-        if (remaining <= 0) {
-          clearInterval(timer);
-          if (overlay.parentNode) {
-            overlay.parentNode.removeChild(overlay);
-          }
-          resolve();
-        } else {
-          countdown.textContent = String(remaining);
-        }
-      }, 1000);
-
-      // CTA 클릭 시 해당 앱으로 이동 (기본 동작 유지)
-      cta.addEventListener('click', function() {
+      // 광고 해제 공통 함수
+      function dismiss() {
         clearInterval(timer);
         if (overlay.parentNode) {
           overlay.parentNode.removeChild(overlay);
         }
         resolve();
-      });
+      }
+
+      // 카운트다운 타이머: 10 → … → 1 → 자동 해제
+      var remaining = 10;
+      var timer = setInterval(function() {
+        remaining--;
+        if (remaining <= 0) {
+          dismiss();
+        } else {
+          countdown.textContent = String(remaining);
+          // 3초 경과(remaining <= 7) 시 건너뛰기 버튼 표시
+          if (remaining <= 7) {
+            skipBtn.style.display = '';
+          }
+        }
+      }, 1000);
+
+      // 건너뛰기 클릭 시 즉시 해제
+      skipBtn.addEventListener('click', dismiss);
+
+      // CTA 클릭 시 해당 앱으로 이동 (기본 동작 유지)
+      cta.addEventListener('click', dismiss);
     });
   }
 
