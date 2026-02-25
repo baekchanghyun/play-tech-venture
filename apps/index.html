@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play Tech Venture</title>
+  <link rel="stylesheet" href="/play-tech-venture/common/global.css">
+  <style>
+    :root[data-theme="dark"] {
+      --bg: #0f0f1a;
+      --text: #eee;
+      --text-sub: #888;
+      --card-bg: #1a1a2e;
+      --card-border: #333;
+      --card-hover: #e94560;
+      --toggle-bg: #1a1a2e;
+      --toggle-border: #555;
+    }
+    :root[data-theme="light"] {
+      --bg: #f5f5f7;
+      --text: #1a1a2e;
+      --text-sub: #666;
+      --card-bg: #fff;
+      --card-border: #ddd;
+      --card-hover: #e94560;
+      --toggle-bg: #fff;
+      --toggle-border: #ccc;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      padding: 3rem 1.5rem;
+      transition: background 0.3s, color 0.3s;
+    }
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    h1 { font-size: 2rem; }
+    .theme-toggle {
+      background: var(--toggle-bg);
+      border: 1px solid var(--toggle-border);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      font-size: 1.3rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .theme-toggle:hover {
+      border-color: var(--card-hover);
+    }
+    .subtitle { color: var(--text-sub); margin-bottom: 2.5rem; }
+    .apps {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .apps a {
+      display: block;
+      padding: 1.2rem 1.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+      height: 100%;
+      transition: border-color 0.2s, background 0.3s, color 0.3s;
+    }
+    .apps a:hover { border-color: var(--card-hover); }
+    .apps .name { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .apps .desc { font-size: 0.85rem; color: var(--text-sub); transition: color 0.3s; }
+    @media (max-width: 480px) {
+      .apps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+  <div class="header">
+    <h1>Play Tech Venture</h1>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+  </div>
+  <p class="subtitle">Browser-based apps collection</p>
+  <ul class="apps">
+    <li><a href="/play-tech-venture/apps/pixel-life/"><div class="name">👾 Pixel Life</div><div class="desc">Pixel-style life simulator</div></a></li>
+    <li><a href="/play-tech-venture/apps/destiny-chart/"><div class="name">🔮 Destiny Chart</div><div class="desc">사주팔자 · 자미두수 · 서양 점성술 계산기</div></a></li>
+    <li><a href="/play-tech-venture/apps/color-palette-lab/"><div class="name">🎨 Color Palette Lab</div><div class="desc">무드 기반 컬러 팔레트 추천</div></a></li>
+    <li><a href="/play-tech-venture/apps/dice-dungeon/"><div class="name">🎲 Dice Dungeon</div><div class="desc">주사위 던전 RPG</div></a></li>
+    <li><a href="/play-tech-venture/apps/ecosystem-sim/"><div class="name">🌿 Ecosystem Sim</div><div class="desc">자연 생태계 시뮬레이터</div></a></li>
+    <li><a href="/play-tech-venture/apps/social-battery/"><div class="name">🔋 Social Battery</div><div class="desc">나의 소셜 배터리 유형 테스트</div></a></li>
+    <li><a href="/play-tech-venture/apps/fantasy-recipe-maker/"><div class="name">🧪 Fantasy Recipe Maker</div><div class="desc">판타지 재료로 마법 레시피 만들기</div></a></li>
+    <li><a href="/play-tech-venture/apps/typing-hero/"><div class="name">⌨️ Typing Hero</div><div class="desc">한글/영어/코드 타이핑 연습 게임</div></a></li>
+    <li><a href="/play-tech-venture/apps/fortune-cookie/"><div class="name">🥠 Fortune Cookie</div><div class="desc">하루 한 번, 포춘 쿠키를 깨고 운세를 수집하세요</div></a></li>
+    <li><a href="/play-tech-venture/apps/signal-noise/"><div class="name">📡 Signal Noise</div><div class="desc">뉴스 속 진짜 신호를 찾아내는 미디어 리터러시 게임</div></a></li>
+    <li><a href="/play-tech-venture/apps/tarot-daily/"><div class="name">🔮 Tarot Daily</div><div class="desc">매일 타로 카드를 뽑고 일기와 함께 기록하세요</div></a></li>
+    <li><a href="/play-tech-venture/apps/rhythm-analyzer/"><div class="name">🥁 Rhythm Analyzer</div><div class="desc">탭으로 리듬을 분석하고 BPM·안정성·점수를 측정하세요</div></a></li>
+    <li><a href="/play-tech-venture/apps/cylinder-ladder/"><div class="name">🪜 Cylinder Ladder</div><div class="desc">원통형 사다리 게임</div></a></li>
+    <li><a href="/play-tech-venture/apps/rps-battle/"><div class="name">✊ RPS Battle</div><div class="desc">가위바위보 대결</div></a></li>
+    <li><a href="/play-tech-venture/apps/urban-legend/"><div class="name">👻 Urban Legend</div><div class="desc">도시 소문 연대기 — 가상 도시 괴담 추리 게임</div></a></li>
+    <li><a href="/play-tech-venture/apps/gacha-pop/"><div class="name">🎰 Gacha Pop</div><div class="desc">캡슐 뽑기 파티 게임</div></a></li>
+  </ul>
+  </div>
+  <script>
+    (function() {
+      var btn = document.getElementById('themeToggle');
+      var root = document.documentElement;
+      var saved = localStorage.getItem('ptv-theme');
+      var theme = saved || 'dark';
+      root.setAttribute('data-theme', theme);
+      btn.textContent = theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+      btn.addEventListener('click', function() {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        btn.textContent = theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+        localStorage.setItem('ptv-theme', theme);
+      });
+    })();
+  </script>
+</body>
+</html>

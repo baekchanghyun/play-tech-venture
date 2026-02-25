@@ -8,7 +8,12 @@
 (function() {
   // 1. 랜딩 페이지 가드
   var path = window.location.pathname.replace(/\/+$/, '');
-  if (path === '/play-tech-venture' || path === '/play-tech-venture/index.html') {
+  if (
+    path === '/play-tech-venture' ||
+    path === '/play-tech-venture/index.html' ||
+    path === '/play-tech-venture/apps' ||
+    path === '/play-tech-venture/apps/index.html'
+  ) {
     return;
   }
 
@@ -71,7 +76,7 @@
   btn.addEventListener('click', function() {
     var confirmed = window.confirm('Play Venture의 앱 목록으로 이동할까요?');
     if (confirmed) {
-      window.location.href = '/play-tech-venture/';
+      window.location.href = '/play-tech-venture/apps/';
     }
   });
 
