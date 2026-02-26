@@ -24,6 +24,14 @@
       cta: '지금 플레이하기 →',
       url: '/play-tech-venture/apps/bomb-pass/',
       image: null
+    },
+    'chain-reaction': {
+      emoji: '💥',
+      title: 'Chain Reaction',
+      description: '연쇄 반응 퍼즐 게임',
+      cta: '지금 플레이하기 →',
+      url: '/play-tech-venture/apps/chain-reaction/',
+      image: null
     }
   };
 
