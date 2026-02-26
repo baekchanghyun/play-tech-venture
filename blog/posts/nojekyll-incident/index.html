@@ -14,7 +14,7 @@ Play Tech Venture Blog
 <p>여기서 잠깐 배경 설명이 필요할 것 같습니다. GitHub Pages는 원래 Jekyll을 위해 만들어진 서비스입니다. Jekyll은 Ruby 기반의 정적 사이트 생성기로, GitHub의 공동 창업자인 Tom Preston-Werner가 2008년에 만들었습니다. 마크다운으로 글을 쓰면 HTML로 변환해 주는, 당시로서는 혁신적인 도구였습니다.</p>
 <p>GitHub Pages가 Jekyll을 기본 처리기로 사용하는 건 그런 역사적 맥락에서 자연스러운 선택이었습니다. 리포지토리에 파일을 올리면 GitHub Pages가 자동으로 Jekyll 빌드를 실행하고, 그 결과물을 서빙하는 구조입니다.</p>
 <h2 id="정적-사이트-생성기의-세대교체">정적 사이트 생성기의 세대교체</h2>
-<p>문제는 2024~2025년 현재, 정적 사이트 생성기의 지형이 완전히 바뀌었다는 것입니다.</p>
+<p>문제는 2026년 현재, 정적 사이트 생성기의 지형이 완전히 바뀌었다는 것입니다.</p>
 <p>Jekyll 이후로 Hugo, Gatsby, Next.js, Nuxt, Astro, 11ty 등 수많은 정적 사이트 빌더가 등장했습니다. 특히 JAMStack(JavaScript, APIs, Markup)이라는 아키텍처가 자리잡으면서, 프론트엔드 프레임워크로 빌드한 결과물을 CDN에 올리는 패턴이 일반화되었습니다.</p>
 <p>저희 Play Tech Venture도 이 흐름 위에 있습니다. 앱은 React + Vite로, 블로그는 Astro로 빌드하고, GitHub Pages에 정적 파일만 올리는 방식입니다. 서버가 필요 없으니 인프라 비용이 제로이고, 빌드 결과물만 관리하면 되니까 배포도 단순합니다.</p>
 <p>그런데 이 “현대적인 정적 사이트”와 GitHub Pages의 “Jekyll 기본값” 사이에 미묘한 충돌이 있습니다.</p>
