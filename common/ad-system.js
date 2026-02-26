@@ -16,6 +16,14 @@
       cta: '지금 플레이하기 →',
       url: '/play-tech-venture/apps/gacha-pop/',
       image: null
+    },
+    'bomb-pass': {
+      emoji: '💣',
+      title: 'Bomb Pass',
+      description: '폭탄 돌리기 파티 게임',
+      cta: '지금 플레이하기 →',
+      url: '/play-tech-venture/apps/bomb-pass/',
+      image: null
     }
   };
 
