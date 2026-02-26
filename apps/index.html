@@ -87,17 +87,26 @@
       gap: 1rem;
     }
     .apps a {
-      display: block;
-      padding: 1.2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 8px;
       color: var(--text);
       text-decoration: none;
       height: 100%;
+      overflow: hidden;
       transition: border-color 0.2s, background 0.3s, color 0.3s;
     }
     .apps a:hover { border-color: var(--card-hover); }
+    .apps .thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      background: var(--card-border);
+    }
+    .apps .card-body { padding: 0.8rem 1rem; }
     .apps .name { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem; }
     .apps .desc { font-size: 0.85rem; color: var(--text-sub); transition: color 0.3s; }
     @media (max-width: 480px) {
@@ -121,24 +130,24 @@
     <span class="blog-arrow">&#8250;</span>
   </a>
   <ul class="apps">
-    <li><a href="/play-tech-venture/apps/bomb-pass/"><div class="name">💣 Bomb Pass</div><div class="desc">폭탄 돌리기 파티 게임</div></a></li>
-    <li><a href="/play-tech-venture/apps/gacha-pop/"><div class="name">🎰 Gacha Pop</div><div class="desc">캡슐 뽑기 파티 게임</div></a></li>
-    <li><a href="/play-tech-venture/apps/rhythm-analyzer/"><div class="name">🥁 Rhythm Analyzer</div><div class="desc">탭으로 리듬을 분석하고 BPM·안정성·점수를 측정하세요</div></a></li>
-    <li><a href="/play-tech-venture/apps/rps-battle/"><div class="name">✊ RPS Battle</div><div class="desc">가위바위보 대결</div></a></li>
-    <li><a href="/play-tech-venture/apps/tarot-daily/"><div class="name">🔮 Tarot Daily</div><div class="desc">매일 타로 카드를 뽑고 일기와 함께 기록하세요</div></a></li>
-    <li><a href="/play-tech-venture/apps/fortune-cookie/"><div class="name">🥠 Fortune Cookie</div><div class="desc">하루 한 번, 포춘 쿠키를 깨고 운세를 수집하세요</div></a></li>
-    <li><a href="/play-tech-venture/apps/ecosystem-sim/"><div class="name">🌿 Ecosystem Sim</div><div class="desc">자연 생태계 시뮬레이터</div></a></li>
-    <li><a href="/play-tech-venture/apps/cylinder-ladder/"><div class="name">🪜 Cylinder Ladder</div><div class="desc">원통형 사다리 게임</div></a></li>
-    <li><a href="/play-tech-venture/apps/destiny-chart/"><div class="name">🔮 Destiny Chart</div><div class="desc">사주팔자 · 자미두수 · 서양 점성술 계산기</div></a></li>
-    <li><a href="/play-tech-venture/apps/typing-hero/"><div class="name">⌨️ Typing Hero</div><div class="desc">한글/영어/코드 타이핑 연습 게임</div></a></li>
-    <li><a href="/play-tech-venture/apps/social-battery/"><div class="name">🔋 Social Battery</div><div class="desc">나의 소셜 배터리 유형 테스트</div></a></li>
-    <li><a href="/play-tech-venture/apps/color-palette-lab/"><div class="name">🎨 Color Palette Lab</div><div class="desc">무드 기반 컬러 팔레트 추천</div></a></li>
-    <li><a href="/play-tech-venture/apps/pixel-life/"><div class="name">👾 Pixel Life</div><div class="desc">Pixel-style life simulator</div></a></li>
-    <li><a href="/play-tech-venture/apps/dice-dungeon/"><div class="name">🎲 Dice Dungeon</div><div class="desc">주사위 던전 RPG</div></a></li>
-    <li><a href="/play-tech-venture/apps/signal-noise/"><div class="name">📡 Signal Noise</div><div class="desc">뉴스 속 진짜 신호를 찾아내는 미디어 리터러시 게임</div></a></li>
-    <li><a href="/play-tech-venture/apps/fantasy-recipe-maker/"><div class="name">🧪 Fantasy Recipe Maker</div><div class="desc">판타지 재료로 마법 레시피 만들기</div></a></li>
-    <li><a href="/play-tech-venture/apps/urban-legend/"><div class="name">👻 Urban Legend</div><div class="desc">도시 소문 연대기 — 가상 도시 괴담 추리 게임</div></a></li>
-    <li><a href="/play-tech-venture/apps/chain-reaction/"><div class="name">💥 Chain Reaction</div><div class="desc">연쇄 반응 퍼즐 — 모든 셀을 폭발시켜라!</div></a></li>
+    <li><a href="/play-tech-venture/apps/bomb-pass/"><img class="thumb" src="/play-tech-venture/apps/images/bomb-pass.png" alt="" loading="lazy"><div class="card-body"><div class="name">💣 Bomb Pass</div><div class="desc">폭탄 돌리기 파티 게임</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/gacha-pop/"><img class="thumb" src="/play-tech-venture/apps/images/gacha-pop.png" alt="" loading="lazy"><div class="card-body"><div class="name">🎰 Gacha Pop</div><div class="desc">캡슐 뽑기 파티 게임</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/rhythm-analyzer/"><img class="thumb" src="/play-tech-venture/apps/images/rhythm-analyzer.png" alt="" loading="lazy"><div class="card-body"><div class="name">🥁 Rhythm Analyzer</div><div class="desc">탭으로 리듬을 분석하고 BPM·안정성·점수를 측정하세요</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/rps-battle/"><img class="thumb" src="/play-tech-venture/apps/images/rps-battle.png" alt="" loading="lazy"><div class="card-body"><div class="name">✊ RPS Battle</div><div class="desc">가위바위보 대결</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/tarot-daily/"><img class="thumb" src="/play-tech-venture/apps/images/tarot-daily.png" alt="" loading="lazy"><div class="card-body"><div class="name">🔮 Tarot Daily</div><div class="desc">매일 타로 카드를 뽑고 일기와 함께 기록하세요</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/fortune-cookie/"><img class="thumb" src="/play-tech-venture/apps/images/fortune-cookie.png" alt="" loading="lazy"><div class="card-body"><div class="name">🥠 Fortune Cookie</div><div class="desc">하루 한 번, 포춘 쿠키를 깨고 운세를 수집하세요</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/ecosystem-sim/"><img class="thumb" src="/play-tech-venture/apps/images/ecosystem-sim.png" alt="" loading="lazy"><div class="card-body"><div class="name">🌿 Ecosystem Sim</div><div class="desc">자연 생태계 시뮬레이터</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/cylinder-ladder/"><img class="thumb" src="/play-tech-venture/apps/images/cylinder-ladder.png" alt="" loading="lazy"><div class="card-body"><div class="name">🪜 Cylinder Ladder</div><div class="desc">원통형 사다리 게임</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/destiny-chart/"><img class="thumb" src="/play-tech-venture/apps/images/destiny-chart.png" alt="" loading="lazy"><div class="card-body"><div class="name">🔮 Destiny Chart</div><div class="desc">사주팔자 · 자미두수 · 서양 점성술 계산기</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/typing-hero/"><img class="thumb" src="/play-tech-venture/apps/images/typing-hero.png" alt="" loading="lazy"><div class="card-body"><div class="name">⌨️ Typing Hero</div><div class="desc">한글/영어/코드 타이핑 연습 게임</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/social-battery/"><img class="thumb" src="/play-tech-venture/apps/images/social-battery.png" alt="" loading="lazy"><div class="card-body"><div class="name">🔋 Social Battery</div><div class="desc">나의 소셜 배터리 유형 테스트</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/color-palette-lab/"><img class="thumb" src="/play-tech-venture/apps/images/color-palette-lab.png" alt="" loading="lazy"><div class="card-body"><div class="name">🎨 Color Palette Lab</div><div class="desc">무드 기반 컬러 팔레트 추천</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/pixel-life/"><img class="thumb" src="/play-tech-venture/apps/images/pixel-life.png" alt="" loading="lazy"><div class="card-body"><div class="name">👾 Pixel Life</div><div class="desc">Pixel-style life simulator</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/dice-dungeon/"><img class="thumb" src="/play-tech-venture/apps/images/dice-dungeon.png" alt="" loading="lazy"><div class="card-body"><div class="name">🎲 Dice Dungeon</div><div class="desc">주사위 던전 RPG</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/signal-noise/"><img class="thumb" src="/play-tech-venture/apps/images/signal-noise.png" alt="" loading="lazy"><div class="card-body"><div class="name">📡 Signal Noise</div><div class="desc">뉴스 속 진짜 신호를 찾아내는 미디어 리터러시 게임</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/fantasy-recipe-maker/"><img class="thumb" src="/play-tech-venture/apps/images/fantasy-recipe-maker.png" alt="" loading="lazy"><div class="card-body"><div class="name">🧪 Fantasy Recipe Maker</div><div class="desc">판타지 재료로 마법 레시피 만들기</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/urban-legend/"><img class="thumb" src="/play-tech-venture/apps/images/urban-legend.png" alt="" loading="lazy"><div class="card-body"><div class="name">👻 Urban Legend</div><div class="desc">도시 소문 연대기 — 가상 도시 괴담 추리 게임</div></div></a></li>
+    <li><a href="/play-tech-venture/apps/chain-reaction/"><img class="thumb" src="/play-tech-venture/apps/images/chain-reaction.png" alt="" loading="lazy"><div class="card-body"><div class="name">💥 Chain Reaction</div><div class="desc">연쇄 반응 퍼즐 — 모든 셀을 폭발시켜라!</div></div></a></li>
   </ul>
   </div>
   <script>
