@@ -48,6 +48,14 @@
       cta: '지금 플레이하기 →',
       url: '/play-tech-venture/apps/odd-even-marble/',
       image: null
+    },
+    'spin-wheel': {
+      emoji: '🎯',
+      title: '파티 룰렛',
+      description: '룰렛을 돌려 나온 미션을 수행하세요',
+      cta: '지금 플레이하기 →',
+      url: '/play-tech-venture/apps/spin-wheel/',
+      image: null
     }
   };
 
