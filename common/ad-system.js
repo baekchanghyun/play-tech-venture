@@ -32,6 +32,14 @@
       cta: '지금 플레이하기 →',
       url: '/play-tech-venture/apps/chain-reaction/',
       image: null
+    },
+    'combo-picker': {
+      emoji: '✨',
+      title: 'Combo Picker',
+      description: '랜덤 키워드 조합으로 영감 얻기',
+      cta: '조합 뽑기 →',
+      url: '/play-tech-venture/apps/combo-picker/',
+      image: null
     }
   };
 
