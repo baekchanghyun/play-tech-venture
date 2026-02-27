@@ -40,6 +40,14 @@
       cta: '조합 뽑기 →',
       url: '/play-tech-venture/apps/combo-picker/',
       image: null
+    },
+    'odd-even-marble': {
+      emoji: '🔮',
+      title: '홀짝 구슬 게임',
+      description: '컴퓨터와 1:1 홀짝 구슬 대결',
+      cta: '지금 플레이하기 →',
+      url: '/play-tech-venture/apps/odd-even-marble/',
+      image: null
     }
   };
 
